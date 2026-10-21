@@ -1,0 +1,16 @@
+# Copy to .dev.vars for local development. In production set these with:
+#   npx wrangler secret put ADMIN_PASSWORD
+#   npx wrangler secret put SESSION_SECRET
+ADMIN_PASSWORD=change-me-locally
+# Any long random string (e.g. `openssl rand -hex 32`)
+SESSION_SECRET=replace-with-a-long-random-string
+
+# Optional: event emails (registration confirmations and certificates) sent from the club Gmail
+# through a Google Apps Script web app. Free, no domain or card. Setup steps are at the top of
+# scripts/gmail-mailer.gs. In production:
+#   npx wrangler secret put MAIL_SCRIPT_URL
+#   npx wrangler secret put MAIL_SCRIPT_SECRET
+MAIL_SCRIPT_URL=
+MAIL_SCRIPT_SECRET=
+MAIL_FROM_NAME=Life Robo
+MAIL_REPLY_TO=

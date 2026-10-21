@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "life-robo",
+  "main": "worker/index.ts",
+  "compatibility_date": "2025-09-01",
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    // Static files skip the worker; everything else (API, media, HTML navigations) hits it.
+    "run_worker_first": ["/*", "!/assets/*", "!/photos/*", "!/brand/*", "!/favicon.png", "!/site.webmanifest"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "life-robo-db",
+      // Replace with the id printed by `npx wrangler d1 create life-robo-db`.
+      "database_id": "35738601-b05e-44c5-823d-18d97662ed92",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
